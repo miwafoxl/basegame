@@ -8,6 +8,18 @@
 [node name="Default" type="Node2D" unique_id=96861762]
 script = ExtResource("1_xcqgy")
 
+[node name="iconrev" type="Button" parent="." unique_id=1948506235]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 437.0
+offset_top = 404.0
+offset_right = 526.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "reverse all"
+
 [node name="icon1but" type="Button" parent="." unique_id=1164712615]
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,21 +54,27 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=524187761]
-position = Vector2(1080, 582)
+position = Vector2(347, 252)
 texture = ExtResource("1_1wi6f")
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1343005700]
-position = Vector2(62, 59)
+position = Vector2(561, 255)
 texture = ExtResource("1_1wi6f")
 script = ExtResource("3_k8gec")
+scripts = Array[GDScript]([ExtResource("4_huuv1")])
 
 [node name="Icon3" type="Sprite2D" parent="." unique_id=1137830609]
-position = Vector2(576, 317)
+position = Vector2(759, 254)
 texture = ExtResource("1_1wi6f")
 script = ExtResource("3_k8gec")
 verbose = true
 scripts = Array[GDScript]([ExtResource("4_huuv1")])
+flags = {
+"amount": 0.1,
+"reverse": null
+}
 
+[connection signal="pressed" from="iconrev" to="." method="_on_iconrev_pressed"]
 [connection signal="pressed" from="icon1but" to="." method="_on_icon_but_pressed"]
 [connection signal="pressed" from="icon2but" to="." method="_on_icon_2_but_pressed"]
 [connection signal="pressed" from="icon3but" to="." method="_on_icon_3_but_pressed"]
