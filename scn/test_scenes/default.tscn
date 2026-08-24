@@ -69,10 +69,10 @@ texture = ExtResource("1_1wi6f")
 script = ExtResource("3_k8gec")
 verbose = true
 scripts = Array[GDScript]([ExtResource("4_huuv1")])
-flags = {
+flags = Dictionary[String, Variant]({
 "amount": 0.1,
 "reverse": null
-}
+})
 
 [connection signal="pressed" from="iconrev" to="." method="_on_iconrev_pressed"]
 [connection signal="pressed" from="icon1but" to="." method="_on_icon_but_pressed"]

@@ -1,3 +1,4 @@
+@icon("res://src/node/GameObject.svg")
 class_name GameObject extends Node
 
 const SELF_NODE_ACTOR: String = "self"
@@ -110,7 +111,7 @@ func insert_behaviour(behaviour: Behaviour) -> bool:
 	if _script == null:
 		return false
 	add_script(_script, _name)
-	_log_standard("Inserted behaviour '%s'" % behaviour.name)
+	_log_standard("Inserted behaviour '%s'" % _name)
 	return behaviours.set(_name, behaviour)
 
 ## Updates the behaviour list based on the scripts array. Ran automatically by
@@ -122,7 +123,7 @@ func preprocess_behaviours() -> int:
 		var _script: GDScript = scripts[i]
 		var _tag: String = _script.get_global_name()
 		if not add_script(_script, _tag):
-			_log_err("Script %s at index %s does not extend class Behaviour" % [_tag, i])
+			_log_err("Script for '%s' at index %s does not extend class Behaviour" % [_tag, i])
 	return 0
 
 ## Updates each behaviour with a new [code]actors[/code] value, then runs [code]init()[/code].
@@ -184,6 +185,7 @@ func _process(delta: float) -> void:
 	tick += 1
 	if tick > 1000:
 		tick = 0
+	process(delta)
 
 func _physics_process(delta: float) -> void:
 	if tick == -1: return # Disable processing
@@ -219,3 +221,10 @@ func _ready() -> void:
 		tick = preprocess_behaviours()
 	
 #endregion OVERRIDES
+#region OVERRIDEABLES
+
+@warning_ignore("unused_parameter")
+func process(delta: float) -> void:
+	pass
+
+#endregion OVERRIDEABLES
