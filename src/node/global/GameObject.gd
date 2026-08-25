@@ -107,7 +107,7 @@ func get_behaviour_match(expr: String = "B*") -> Array[Behaviour]:
 ## If negative, the value will be considered from the end of the array.
 func insert_behaviour(behaviour: Behaviour) -> bool:
 	var _script: GDScript = behaviour.get_script()
-	var _name: String = _script.get_global_name().to_lower()
+	var _name: String = _script.get_global_name()
 	if _script == null:
 		return false
 	add_script(_script, _name)
