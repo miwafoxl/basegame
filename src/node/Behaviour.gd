@@ -1,4 +1,5 @@
 @abstract
+@icon("res://src/node/Behaviour.svg")
 class_name Behaviour extends Node
 
 @warning_ignore("unused_signal")
