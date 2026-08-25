@@ -130,12 +130,14 @@ func preprocess_behaviours() -> int:
 ## This ensures that all behaviours have a reference to the actors array. It's ran
 ## automatically by [method GameObject.preprocess_behaviours] and other methods.
 func init_behaviours(behaviour_array: Array[Behaviour]) -> void:
+	after_reinit.call_deferred()
 	for behaviour: Behaviour in behaviour_array:
 		behaviour.actor = self
 		behaviour.flags = flags.duplicate_deep()
 		if not behaviour.event.is_connected(dispatch_event):
 			behaviour.event.connect(dispatch_event)
 		behaviour.init()
+	
 
 #endregion MANAGING BEHAVIOURS
 #region EVENTS
@@ -188,14 +190,12 @@ func _process(delta: float) -> void:
 	process(delta)
 
 func _physics_process(delta: float) -> void:
-	if tick == -1: return # Disable processing
-	if do_behaviour_init:
-		init_behaviours(behaviours.values())
-		do_behaviour_init = false
+	if not do_behaviour_init: return # Disable processing
 	if not behaviours.is_empty():
 		for _b: Behaviour in behaviours.values():
 			if _b.enabled and _b.condition_physics(delta): 
 				_b.action_physics(delta)
+	physics_process(delta)
 
 #endregion BEHAVIOUR CLOCK
 #region SCRIPTS
@@ -219,12 +219,23 @@ func _ready() -> void:
 	# Duplicate behaviours and pre-process before running
 	if tick == -1:
 		tick = preprocess_behaviours()
+		after_init.call_deferred()
 	
 #endregion OVERRIDES
 #region OVERRIDEABLES
 
+func after_init() -> void:
+	pass
+
+func after_reinit() -> void:
+	pass
+
 @warning_ignore("unused_parameter")
 func process(delta: float) -> void:
+	pass
+
+@warning_ignore("unused_parameter")
+func physics_process(delta: float) -> void:
 	pass
 
 #endregion OVERRIDEABLES
