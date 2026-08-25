@@ -205,6 +205,8 @@ func add_script(script: GDScript, tag: String) -> bool:
 	_node.set_script(script)
 	if _node is Behaviour:
 		var _behaviour: Behaviour = _node
+		if tag.validate_node_name():
+			_behaviour.set_name(tag as StringName)
 		behaviours.set(tag, _behaviour)
 		add_child(_node, false, Node.INTERNAL_MODE_FRONT)
 		return true
