@@ -23,6 +23,13 @@ buses/default_bus_layout="uid://k6tgwqe4wmc7"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://core/": "gray",
+"res://game/": "blue"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

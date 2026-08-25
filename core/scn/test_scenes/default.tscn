@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://0wyvdch3vdwq"]
 
-[ext_resource type="Texture2D" uid="uid://bmfkonhm682iw" path="res://icon.svg" id="1_1wi6f"]
-[ext_resource type="Script" uid="uid://budfj15tal10q" path="res://src/scene/testing.gd" id="1_xcqgy"]
-[ext_resource type="Script" uid="uid://xqlj2d4kt16i" path="res://src/node/Template.gd" id="3_k8gec"]
-[ext_resource type="Script" uid="uid://dlog5hebtnefk" path="res://src/behaviour/BRotate.gd" id="4_huuv1"]
+[ext_resource type="Script" uid="uid://budfj15tal10q" path="res://core/src/scene/testing.gd" id="1_3jvii"]
+[ext_resource type="Texture2D" uid="uid://bmfkonhm682iw" path="res://icon.svg" id="2_q5ebv"]
+[ext_resource type="Script" uid="uid://xqlj2d4kt16i" path="res://game/scripts/gameobject/Template.gd" id="3_3jvii"]
+[ext_resource type="Script" uid="uid://dlog5hebtnefk" path="res://game/scripts/behaviour/BRotate.gd" id="4_3jvii"]
 
 [node name="Default" type="Node2D" unique_id=96861762]
-script = ExtResource("1_xcqgy")
+script = ExtResource("1_3jvii")
 
 [node name="iconrev" type="Button" parent="." unique_id=1948506235]
 anchors_preset = 15
@@ -55,20 +55,20 @@ grow_vertical = 2
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=524187761]
 position = Vector2(347, 252)
-texture = ExtResource("1_1wi6f")
+texture = ExtResource("2_q5ebv")
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=1343005700]
 position = Vector2(561, 255)
-texture = ExtResource("1_1wi6f")
-script = ExtResource("3_k8gec")
-scripts = Array[GDScript]([ExtResource("4_huuv1")])
+texture = ExtResource("2_q5ebv")
+script = ExtResource("3_3jvii")
+scripts = Array[GDScript]([ExtResource("4_3jvii")])
 
 [node name="Icon3" type="Sprite2D" parent="." unique_id=1137830609]
 position = Vector2(759, 254)
-texture = ExtResource("1_1wi6f")
-script = ExtResource("3_k8gec")
+texture = ExtResource("2_q5ebv")
+script = ExtResource("3_3jvii")
 verbose = true
-scripts = Array[GDScript]([ExtResource("4_huuv1")])
+scripts = Array[GDScript]([ExtResource("4_3jvii")])
 flags = Dictionary[String, Variant]({
 "amount": 0.1,
 "reverse": null
