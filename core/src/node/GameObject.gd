@@ -1,4 +1,4 @@
-@icon("res://src/node/GameObject.svg")
+@icon("res://core/res/GameObject.svg")
 class_name GameObject extends Node
 
 const SELF_NODE_ACTOR: String = "self"
